@@ -42,6 +42,16 @@ namespace opening_weekend
 
             Console.WriteLine($"3.feladat: Filmek száma az állományban: {Filmek.Count} db");
 
+            int Osszbevetel = 0;
+            foreach (var f in Filmek)
+            {
+                if (f.forgalmazo=="UIP")
+                {
+                    //Osszbevetel = Osszbevetel + f.bevel;
+                    Osszbevetel += f.bevel;
+                }
+            }
+            Console.WriteLine($"4.feladat: UIP Duna Film forgalmazó 1. hetes bevételeinek összege: {Osszbevetel} Ft");
 
             Console.ReadKey();
         }
