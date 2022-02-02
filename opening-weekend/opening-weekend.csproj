@@ -48,6 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\Opening-Weekend.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\nyitohetvege.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
