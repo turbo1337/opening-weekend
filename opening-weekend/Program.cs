@@ -40,7 +40,8 @@ namespace opening_weekend
                 Filmek.Add(F);
             }
 
-            Console.WriteLine($"Első heti bevetelek osszege: {Filmek.Count}");
+            Console.WriteLine($"3.feladat: Filmek száma az állományban: {Filmek.Count} db");
+
 
             Console.ReadKey();
         }
