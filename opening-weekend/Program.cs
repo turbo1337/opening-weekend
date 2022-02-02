@@ -31,8 +31,16 @@ namespace opening_weekend
     {
         static void Main(string[] args)
         {
-            
+            List<Film> Filmek = new List<Film>();
 
+            string[] adatok = File.ReadAllLines("nyitohetvege.txt");
+            foreach (var sor in adatok.Skip(1))     
+            {
+                Film F = new Film(sor);
+                Filmek.Add(F);
+            }
+
+            Console.WriteLine($"Első heti bevetelek osszege: {Filmek.Count}");
 
             Console.ReadKey();
         }
