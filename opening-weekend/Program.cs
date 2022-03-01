@@ -116,9 +116,10 @@ namespace opening_weekend
                     {
                         legnagyobbKulonbseg = kulonbsegSzamitott;
 
+                            Console.WriteLine($"8. feladat: A leghosszabb időszak két InterCom-os bemutató között: {legnagyobbKulonbseg} nap");
 
 
-                        Console.ReadKey();
+                            Console.ReadKey();
         }
     }
 }
