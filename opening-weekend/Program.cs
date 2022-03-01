@@ -68,7 +68,57 @@ namespace opening_weekend
                 if (dbMagyarCim[0].StartsWith("W") && dbMagyarCim[1].StartsWith("W") && dbEredetiCim[0].StartsWith("W") && dbEredetiCim[1].StartsWith("W"))
                     vanFilm = true;
                 Console.WriteLine(vanFilm ? "6. feladat: Volt ilyen film!" : "6. feladat: Nem volt ilyen film!");
-                Console.ReadKey();
+
+
+            Dictionary<string, int> forgalmazoEsFilmek = new Dictionary<string, int>();
+
+            Filmek.ForEach((f) => {
+                if (!forgalmazoEsFilmek.ContainsKey(f.forgalmazo))
+                {
+                    forgalmazoEsFilmek.Add(f.forgalmazo, 1);
+                }
+                else
+                {
+                    forgalmazoEsFilmek[f.forgalmazo]++;
+                }
+            });
+
+            List<string> fileKimenet = new List<string>();
+            fileKimenet.Add("forgalmazo;filmekSzama");
+
+            foreach (var f in forgalmazoEsFilmek)
+            {
+                if (f.Value > 1)
+                {
+                    fileKimenet.Add($"{f.Key};{f.Value}");
+                }
+            }
+
+            File.WriteAllLines("stat.csv", fileKimenet);
+
+            List<DateTime> interComBemutatok = new List<DateTime>();
+
+            Filmek.ForEach((f) => {
+                if (f.forgalmazo == "InterCom")
+                {
+                    interComBemutatok.Add(f.bemutato);
+                }
+            });
+
+            int legnagyobbKulonbseg = 0;
+
+            for (int i = 0; i < interComBemutatok.Count; i++)
+            {
+                if (i != 0)
+                {
+                    int kulonbsegSzamitott = (interComBemutatok[i] - interComBemutatok[i - 1]).Days;
+                    if (kulonbsegSzamitott > legnagyobbKulonbseg)
+                    {
+                        legnagyobbKulonbseg = kulonbsegSzamitott;
+
+
+
+                        Console.ReadKey();
         }
     }
 }
