@@ -52,8 +52,23 @@ namespace opening_weekend
                 }
             }
             Console.WriteLine($"4.feladat: UIP Duna Film forgalmazó 1. hetes bevételeinek összege: {Osszbevetel} Ft");
+            Film legtobbLatogato = Filmek.OrderBy(f => f.latogato).Last();
 
-            Console.ReadKey();
+            Console.WriteLine("5. feladat: Legtöbb látogató az első héten:");
+            Console.WriteLine($"\tEredeti cím: {legtobbLatogato.eredeticim}");
+            Console.WriteLine($"\tMagyar cím: {legtobbLatogato.magyarcim}");
+            Console.WriteLine($"\tForgalmazó: {legtobbLatogato.forgalmazo}");
+            Console.WriteLine($"\tBevétel az első héten: {legtobbLatogato.bevel.ToString("C2")}");
+            Console.WriteLine($"\tLátogatók száma: {legtobbLatogato.latogato} fő");
+
+            bool vanFilm = false;
+            Filmek.ForEach((f) => {
+                string[] dbMagyarCim = f.magyarcim.Split(' ');
+                string[] dbEredetiCim = f.eredeticim.Split(' ');
+                if (dbMagyarCim[0].StartsWith("W") && dbMagyarCim[1].StartsWith("W") && dbEredetiCim[0].StartsWith("W") && dbEredetiCim[1].StartsWith("W"))
+                    vanFilm = true;
+                Console.WriteLine(vanFilm ? "6. feladat: Volt ilyen film!" : "6. feladat: Nem volt ilyen film!");
+                Console.ReadKey();
         }
     }
 }
